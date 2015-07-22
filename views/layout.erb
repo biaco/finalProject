@@ -1,0 +1,33 @@
+<header>
+	<h1>Golf</h1>
+
+	<p><a href="/createaccount">Create Account</a>
+
+<% if @user.nil? %>
+	<form action='/' method ='POST'>
+		<label for='username'>Username</label>
+		<input type="text" name="username">
+		<label for="password">Password</label>   
+		<input type="password" name="password">
+		<input type="submit" value="Sign In">
+	</form>
+
+<% else %>
+	<h3>Welcome <%= @user.fname %></h3>
+
+<% end %>
+
+<p><a href="/logout">Log Out</a>
+
+
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About Us</a></li>
+			<li><a href="/courses">Golf Courses</a></li>
+			<li><a href="/golfreviews">Courses Played</a></li>
+		</ul>
+	</nav>
+<%= yield %>
+
+</header>
