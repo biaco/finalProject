@@ -1,1 +1,87 @@
 <h1>Courses</h1>
+
+<h2>Recommended Courses</h2>
+<table>
+	<tr>
+		<th>Course</th>
+		<th>Address</th>
+		<th>Public/Private</th>
+		<th>Number of Holes</th>
+		<th>Course Handicap</th>
+		<th>Description</th>
+	</tr>
+<% @courses.each do |course| %>
+<% if @user.handicap != nil && course.coursehandicap != nil %>
+	<% if @user.handicap <= 6 %>
+		<% if course.coursehandicap <= 11 %>
+				<tr>
+					<td><%= course.coursename %></td>
+					<td><%= course.address %></td>
+					<% if course.public_course == true %>
+						<td>Yes</td>
+						<% else %>
+						<td>No</td>
+					<% end %>
+					<td><%= course.numberOfholes %></td>
+					<td><%= course.coursehandicap %></td>
+					<td><%= course.description %></td>
+				</tr>
+		<% end %>
+
+
+	
+
+	<% elsif @user.handicap > 6 %>
+			<% if course.coursehandicap > 11 %>
+				<tr>
+					<td><%= course.coursename %></td>
+					<td><%= course.address %></td>
+					<% if course.public_course == true %>
+						<td>Yes</td>
+						<% else %>
+						<td>No</td>
+					<% end %>
+					<td><%= course.numberOfholes %></td>
+					<td><%= course.coursehandicap %></td>
+					<td><%= course.description %></td>
+				</tr>
+			</table>
+			<% end %>
+			<% end %>
+	<% end %>
+<% end %>
+
+
+
+
+
+
+<h2>All Courses</h2>
+<table>
+	<tr>
+		<th>Course</th>
+		<th>Address</th>
+		<th>Public/Private</th>
+		<th>Number of Holes</th>
+		<th>Course Handicap</th>
+		<th>Description</th>
+	</tr>
+	<% @courses.each do |data| %>
+	<tr>
+		<td><%= data.coursename %></td>
+		<td><%= data.address %></td>
+		<% if data.public_course = true %>
+			<td>Yes</td>
+			<% else %>
+			<td>No</td>
+		<% end %>
+		<td><%= data.numberOfholes %></td>
+		<td><%= data.coursehandicap %></td>
+		<td><%= data.description %></td>
+
+	</tr>
+	<% end %>
+
+
+
+</table>

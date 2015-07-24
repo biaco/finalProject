@@ -1,19 +1,27 @@
 <% if @user.nil? %>
 
-	<form action='/createuser' method ='POST'>
+<h1>Create an Account To Use the Following Features</h1>
+	<ul>
+		<li>Personal Course Reviews</li>
+		<li>Personal Reccomendations</li>
+		<li>Other Made Up Words</li>
+	</ul>
+
+	<form action='/createaccount' method ='POST'>
 	<label for='username'>Username</label>
 	<input type="text" name="username">
 	<label for="password">Password</label>   
-	<input type="text" name="password">
-	<label for="password">Retype Password</label>  <input type="password" name="password">
+	<input type="password" name="password">
+	<label for="password2">Retype Password</label>  
+	<input type="password" name="password2">
 	<label for="fname">First Name</label>   
 	<input type="text" name="fname">
 	<label for="lname">Last Name</label>   
 	<input type="text" name="lname">
 	<label for="email">Email</label>   
 	<input type="text" name="email">
-	<label for="email">Retype Email</label>   
-	<input type="text" name="email">
+	<label for="email2">Retype Email</label>   
+	<input type="text" name="email2">
 	<label for="handicap">Handicap</label>   
 	<input type="text" name="handicap">
 	<input type="submit" value="Create Account">

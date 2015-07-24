@@ -1,87 +1,150 @@
-<h1>These are reviews</h1>
+<h1>Golf Reviews</h1>
 
-<form action='/addreview' method ='POST'>
-	<label for='courseplayed'>Course</label>
-	<input type='text' name='courseplayed'>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+
+<link rel="stylesheet" type="text/css" href="CSS/dpick.css">
+
+
+
+<table>
+	<tr>
+		<th>Course</th>
+		<th>Date Played</th>
+		<th>Pace of Play</th>
+		<th>Conditions</th>
+		<th>Staff</th>
+		<th>Facilities</th>
+		<th>Value</th>
+		<th>Recommend</th>
+		<th>General Review</th>
+	</tr>
+	<% @reviews.each do |review| %> 
+	<tr>
+		<td><%= review.courseplayed %></td>
+		<td><%= review.dateplayed %></td>
+		<td><%= review.paceofplay %></td>
+		<td><%= review.conditions %></td>
+		<td><%= review.staff %></td>
+		<td><%= review.facilities %></td>
+		<td><%= review.value %></td>
+		<td>
+		<% if review.recommend = true %>
+				<p>Yes</p>
+			<% else %>
+				<p>No</p>
+		<% end %>
+		</td>
+		<td><%= review.gen_review %></td>
+
+	</tr>
+
+	<% end %>
+
+
+</table>
+
+<form action='/golfreviews' method ='POST'>
+	Course<select name='courseplayed'>
+	<% @courses.each do |course| %>
+	<option value="<%= course.coursename %>"><%= course.coursename %></option>
+	<% end %>
+	</select>
+	<h3><a href="/createcourse">Create a New Course Here</a>
+	<br>
+	<label for='dateplayed'>Date Played</label>
+	<input type="text" name='dateplayed' id="datepicker">
 	<!-- DATE PLAYED
 	DATE REVIEWED -->
+
+	<label for='Hole18'>Hole 18 Notes</label>
+		<input type='text' name='hole18'>
 	<br>
-		Pace of Play<select><option value="Paceofplay">1</option><option value="Paceof play">2</option><option value="Paceofplay">3</option><option value="Paceofplay">4</option><option value="Paceofplay">5</option></select>
+		Pace of Play<select name='paceofplay'><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+
 		
-		Conditions<select><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+		Conditions<select name='conditions'><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
 		
-		Staff<select><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+		Staff<select name='staff'><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
 		
-		Facilities<select><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+		Facilities<select name='facilities'><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
 		
-		Value<select><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+		Value<select name='value'><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
 	
 
 	<br>	
-		Recommend<select><option value="true">Yes</option><option value="false">No</option></select>	
+		Recommend<select name='recommend'><option value="true">Yes</option><option value="false">No</option></select>	
 	<br>
-		<label for='review'>General Review</label>
-		<input type='text' name='review'>
+		<label for='gen_review'>General Review</label>
+		<input type='text' name='gen_review'>
 	<br>
 		<label for='Hole1'>Hole 1 Notes</label>
-		<input type='text' name='Hole1'>
+		<input type='text' name='hole1'>
 	<br>
 		<label for='Hole2'>Hole 2 Notes</label>
-		<input type='text' name='Hole2'>
+		<input type='text' name='hole2'>
 	<br>
 		<label for='Hole3'>Hole 3 Notes</label>
-		<input type='text' name='Hole3'>
+		<input type='text' name='hole3'>
 	<br>
 		<label for='Hole4'>Hole 4 Notes</label>
-		<input type='text' name='Hole4'>
+		<input type='text' name='hole4'>
 	<br>
 		<label for='Hole5'>Hole 5 Notes</label>
-		<input type='text' name='Hole5'>
+		<input type='text' name='hole5'>
 	<br>
 		<label for='Hole6'>Hole 6 Notes</label>
-		<input type='text' name='Hole6'>
+		<input type='text' name='hole6'>
 	<br>
 		<label for='Hole7'>Hole 7 Notes</label>
-		<input type='text' name='Hole7'>
+		<input type='text' name='hole7'>
 	<br>
 		<label for='Hole8'>Hole 8 Notes</label>
-		<input type='text' name='Hole8'>
+		<input type='text' name='hole8'>
 	<br>
 		<label for='Hole9'>Hole 9 Notes</label>
-		<input type='text' name='Hole9'>
+		<input type='text' name='hole9'>
 	<br>
 		<label for='Hole10'>Hole 10 Notes</label>
-		<input type='text' name='Hole10'>
+		<input type='text' name='hole10'>
 	<br>
 		<label for='Hole11'>Hole 11 Notes</label>
-		<input type='text' name='Hole11'>
+		<input type='text' name='hole11'>
 	<br>
 		<label for='Hole12'>Hole 12 Notes</label>
-		<input type='text' name='Hole12'>
+		<input type='text' name='hole12'>
 	<br>
 		<label for='Hole13'>Hole 13 Notes</label>
-		<input type='text' name='Hole13'>
+		<input type='text' name='hole13'>
 	<br>
 		<label for='Hole14'>Hole 14 Notes</label>
-		<input type='text' name='Hole14'>
+		<input type='text' name='hole14'>
 	<br>
 		<label for='Hole15'>Hole 15 Notes</label>
-		<input type='text' name='Hole15'>
+		<input type='text' name='hole15'>
 	<br>
 		<label for='Hole16'>Hole 16 Notes</label>
-		<input type='text' name='Hole16'>
+		<input type='text' name='hole16'>
 	<br>
 		<label for='Hole17'>Hole 17 Notes</label>
-		<input type='text' name='Hole17'>
+		<input type='text' name='hole17'>
 	<br>
 		<label for='Hole18'>Hole 18 Notes</label>
-		<input type='text' name='Hole18'>
+		<input type='text' name='hole18'>
 	<br>
 		<input type="submit" value="Save Changes">
 	
 
 	
 </form>
+
+
 
 
 <!-- 
